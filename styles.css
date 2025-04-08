@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    background-color: #000;
+    color: #fff;
+    font-family: monospace;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+  }
+  
+  #waitlist-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  #waitlist-btn:hover {
+    background-color: white;
+    color: black;
+  }
+  
+  main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #typing-text {
+    font-size: 2.5rem;
+    white-space: nowrap;
+    border-right: 2px solid white;
+    padding-right: 5px;
+  }
