@@ -7,10 +7,14 @@ function typeLetter() {
   if (i < text.length) {
     el.textContent += text.charAt(i);
     i++;
-    setTimeout(typeLetter, 150);
+    setTimeout(typeLetter, 120);
   } else {
-    el.style.borderRight = "none"; // Remove cursor after typing
+    el.style.borderRight = "none";
   }
 }
 
 window.onload = typeLetter;
+
+document.getElementById("waitlist-btn").onclick = () => {
+  window.location.href = "https://forms.gle/your-waitlist-form"; // replace with your actual form URL
+};

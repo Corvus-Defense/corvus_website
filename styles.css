@@ -1,44 +1,93 @@
 body {
-    margin: 0;
-    background-color: #000;
-    color: #fff;
-    font-family: monospace;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0b0c10, #1f1f1f);
+  color: #e5e5e5;
+  font-family: 'Rajdhani', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  cursor: none;
+}
+
+header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+#waitlist-btn {
+  background: rgba(255, 255, 255, 0.05);
+  color: #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  padding: 10px 20px;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  border-radius: 6px;
+  cursor: none;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards 1.5s;
+}
+
+#waitlist-btn:hover {
+  background-color: #e5e5e5;
+  color: #0b0c10;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#typing-text {
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
+  white-space: nowrap;
+  border-right: 2px solid #e5e5e5;
+  padding-right: 5px;
+  text-shadow: 0 0 10px #2f2f2f;
+  text-align: center;
+  opacity: 0;
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 10px rgba(255,255,255,0.7), 0 0 20px rgba(255,255,255,0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
-  
+}
+
+@media (max-width: 600px) {
   header {
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px;
+    padding: 10px;
   }
-  
+
   #waitlist-btn {
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-    padding: 10px 20px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.3s;
+    padding: 8px 14px;
+    font-size: 0.9rem;
   }
-  
-  #waitlist-btn:hover {
-    background-color: white;
-    color: black;
-  }
-  
-  main {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+
   #typing-text {
-    font-size: 2.5rem;
-    white-space: nowrap;
-    border-right: 2px solid white;
-    padding-right: 5px;
+    font-size: 1.7rem;
+    text-align: center;
+    padding: 0 10px;
   }
+}
