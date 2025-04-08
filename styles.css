@@ -19,13 +19,13 @@ header {
 }
 
 #waitlist-btn {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.001);
   color: #e5e5e5;
   border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(6px);
   padding: 10px 20px;
   font-size: clamp(0.9rem, 1.5vw, 1rem);
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: none;
   transition: all 0.3s ease;
   opacity: 0;
