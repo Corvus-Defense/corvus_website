@@ -94,7 +94,7 @@ main {
   }
 }
 
-input, button, textarea, select, a, label {
+* {
   cursor: none !important;
 }
 
