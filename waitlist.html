@@ -11,15 +11,14 @@
     <a href="index.html" id="waitlist-btn">← Back</a>
   </header>
   <main>
-    <form id="waitlist-form" class="waitlist-form">
+    <form id="waitlist-form" class="waitlist-form" style="opacity: 0; animation: fadeIn 2s ease-out forwards 0.5s;">
       <h2>Join the Waitlist</h2>
-      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      <input type="text" id="email" name="email" placeholder="Enter your email" />
       <button type="submit" tabindex="-1">Submit</button>
       <p id="response-msg"></p>
     </form>
   </main>
   <script>
-    // Function to force the native cursor to remain hidden on all elements
     const hideNativeCursor = () => {
       document.body.style.cursor = "none";
       document.querySelectorAll("input, button, textarea, a, select, label").forEach(el => {
@@ -27,7 +26,6 @@
       });
     };
   
-    // Function to fade out the custom .cursor-dot
     const fadeOutCursor = () => {
       const dot = document.querySelector(".cursor-dot");
       if (dot) {
@@ -36,15 +34,35 @@
       }
     };
   
-    // Handle form submission
+    const showError = (msg) => {
+      const msgEl = document.getElementById("response-msg");
+      msgEl.textContent = msg;
+      msgEl.style.color = "#ff6b6b";
+      msgEl.style.opacity = "1";
+    };
+  
     document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
       e.preventDefault();
-      // On submit, always fade out the custom dot and force hide the native cursor.
       fadeOutCursor();
       hideNativeCursor();
   
-      const email = document.getElementById("email").value;
+      const email = document.getElementById("email").value.trim();
       const msgEl = document.getElementById("response-msg");
+      msgEl.textContent = "";
+      msgEl.style.opacity = "0";
+  
+      // ✨ Check if email is empty
+      if (!email) {
+        showError("Please enter your email address.");
+        return;
+      }
+  
+      // ✨ Check if email format is valid
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showError("Please enter a valid email address.");
+        return;
+      }
   
       try {
         const res = await fetch("/api/waitlist", {
@@ -54,35 +72,22 @@
         });
   
         if (res.ok) {
-          // On success, wait for the fade-out then navigate
           setTimeout(() => {
             window.location.href = "index.html";
           }, 200);
         } else {
-          // On failure, show the message and reapply cursor hiding
           const data = await res.json();
-          msgEl.textContent = data.message || "Something went wrong.";
-          msgEl.style.color = "#ff6b6b";
-          hideNativeCursor();
-          // Ensure the custom cursor dot is visible again for further interaction.
+          showError(data.message || "Something went wrong.");
           const dot = document.querySelector(".cursor-dot");
-          if (dot) {
-            dot.style.opacity = "1";
-          }
+          if (dot) dot.style.opacity = "1";
         }
       } catch (err) {
-        // On network error
-        msgEl.textContent = "Network error. Try again.";
-        msgEl.style.color = "#ff6b6b";
-        hideNativeCursor();
+        showError("Network error. Try again.");
         const dot = document.querySelector(".cursor-dot");
-        if (dot) {
-          dot.style.opacity = "1";
-        }
+        if (dot) dot.style.opacity = "1";
       }
     });
   
-    // Handle the Back button similarly so the native cursor stays hidden during navigation.
     document.getElementById("waitlist-btn").addEventListener("click", (e) => {
       e.preventDefault();
       fadeOutCursor();
@@ -91,8 +96,7 @@
         window.location.href = "index.html";
       }, 200);
     });
-    
-    // Call once on page load to ensure the native cursor is hidden
+  
     hideNativeCursor();
   </script>
   <script src="cursor.js"></script>

@@ -30,6 +30,7 @@ header {
   transition: all 0.3s ease;
   opacity: 0;
   animation: fadeIn 2s ease-out forwards 1.5s;
+  text-decoration: none;
 }
 
 #waitlist-btn:hover {
@@ -113,24 +114,24 @@ input, button, textarea, select, a, label {
   margin: auto; /* centers the form container vertically if needed */
 }
 
-.waitlist-form input[type="email"] {
+.waitlist-form input[type="text"] {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #e5e5e5;
-  padding: 16px 12px;
-  font-size: 1.1rem;
-  border-radius: 18px;
+  padding: 20px 15px;
+  font-size: 1.2rem;
+  border-radius: 9999px; /* fully rounded */
   width: 100%;
   transition: all 0.3s ease;
-  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
 }
 
-.waitlist-form input[type="email"]::placeholder {
+.waitlist-form input[type="text"]::placeholder {
   color: rgba(229, 229, 229, 0.5);
   font-size: 0.95rem;
 }
 
-.waitlist-form input[type="email"]:focus {
+.waitlist-form input[type="text"]:focus {
   outline: none;
   background: rgba(255, 255, 255, 0.08);
   border-color: #ffffff;
@@ -154,4 +155,13 @@ input, button, textarea, select, a, label {
 .waitlist-form button:hover {
   background-color: #aeacac;
   transform: translateY(-1px);
+}
+
+#response-msg {
+  font-size: 0.95rem;
+  color: #ff6b6b;
+  text-align: center;
+  margin-top: -10px;
+  min-height: 1.5em;
+  transition: opacity 0.3s ease;
 }
