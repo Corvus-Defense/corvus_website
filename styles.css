@@ -67,6 +67,7 @@ main {
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
+  opacity: 0; /* start fully hidden */
 }
 
 @keyframes fadeIn {
@@ -92,8 +93,7 @@ main {
   }
 }
 
-/* Hide native cursor for all interactive elements */
-input, button, textarea, a, select, label {
+input, button, textarea, select, a, label {
   cursor: none !important;
 }
 
