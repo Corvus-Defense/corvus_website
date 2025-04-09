@@ -16,5 +16,5 @@ function typeLetter() {
 window.onload = typeLetter;
 
 document.getElementById("waitlist-btn").onclick = () => {
-  window.location.href = "https://forms.gle/your-waitlist-form"; // replace with your actual form URL
+  window.location.href = "waitlist.html";
 };

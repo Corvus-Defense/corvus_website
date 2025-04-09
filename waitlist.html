@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join the Waitlist – Corvus Defense</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html" id="waitlist-btn">← Back</a>
+  </header>
+  <main>
+    <form id="waitlist-form" class="waitlist-form">
+      <h2>Join the Waitlist</h2>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required />
+      <button type="submit">Submit</button>
+      <p id="response-msg"></p>
+    </form>
+  </main>
+  <script>
+    document.getElementById("waitlist-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const res = await fetch("http://localhost:3000/api/waitlist", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      document.getElementById("response-msg").textContent = data.message;
+    });
+  </script>
+  <script src="cursor.js"></script>
+</body>
+</html>
