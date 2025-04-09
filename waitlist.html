@@ -27,8 +27,21 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-      const data = await res.json();
-      document.getElementById("response-msg").textContent = data.message;
+
+      const msgEl = document.getElementById("response-msg");
+
+      if (res.ok) {
+        // Optional: fade out effect before redirect
+        msgEl.textContent = "Successfully joined. Redirecting...";
+        msgEl.style.color = "#7fffd4";
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 1000);
+      } else {
+        const data = await res.json();
+        msgEl.textContent = data.message || "Something went wrong.";
+        msgEl.style.color = "#ff6b6b";
+      }
     });
   </script>
   <script src="cursor.js"></script>
