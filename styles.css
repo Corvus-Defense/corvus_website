@@ -1,13 +1,9 @@
 body {
   margin: 0;
-  padding: 0;
-  background: linear-gradient(135deg, #0b0c10, #1f1f1f);
-  color: #e5e5e5;
-  font-family: 'Rajdhani', sans-serif;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+  background: black;
   overflow: hidden;
+  font-family: 'Orbitron', sans-serif;
+  color: white;
   cursor: none;
 }
 
@@ -18,26 +14,6 @@ header {
   flex-wrap: wrap;
 }
 
-#waitlist-btn {
-  background: rgba(255, 255, 255, 0.001);
-  color: #a0a0a0;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(6px);
-  padding: 10px 20px;
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
-  border-radius: 6px;
-  cursor: none;
-  transition: all 0.3s ease;
-  opacity: 0;
-  animation: fadeIn 2s ease-out forwards 1.5s;
-  text-decoration: none;
-}
-
-#waitlist-btn:hover {
-  background-color: #aeacac;
-  color: #0b0c10;
-}
-
 main {
   flex-grow: 1;
   display: flex;
@@ -46,14 +22,18 @@ main {
 }
 
 #typing-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
   font-size: clamp(1.5rem, 6vw, 2.5rem);
   white-space: nowrap;
-  border-right: 2px solid #e5e5e5;
   padding-right: 5px;
   text-shadow: 0 0 10px #2f2f2f;
-  text-align: center;
+  z-index: 5;
   opacity: 0;
-  animation: fadeIn 1.5s ease-out forwards;
+  animation: fadeIn 1s ease-out forwards 1s;
 }
 
 .cursor-dot {
@@ -68,7 +48,8 @@ main {
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
-  opacity: 0; /* start fully hidden */
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 @keyframes fadeIn {
@@ -77,84 +58,8 @@ main {
   }
 }
 
-@media (max-width: 600px) {
-  header {
-    padding: 10px;
-  }
-
-  #waitlist-btn {
-    padding: 8px 14px;
-    font-size: 0.9rem;
-  }
-
-  #typing-text {
-    font-size: 1.7rem;
-    text-align: center;
-    padding: 0 10px;
-  }
-}
-
 * {
   cursor: none !important;
-}
-
-.waitlist-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px; /* increased spacing between form elements */
-  background: rgba(255, 255, 255, 0.02);
-  padding: 1px 30px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  backdrop-filter: blur(6px);
-  width: 90%;
-  max-width: 400px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
-  margin: auto; /* centers the form container vertically if needed */
-}
-
-.waitlist-form input[type="text"] {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #e5e5e5;
-  padding: 20px 15px;
-  font-size: 1.2rem;
-  border-radius: 9999px; /* fully rounded */
-  width: 100%;
-  transition: all 0.3s ease;
-  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.05);
-}
-
-.waitlist-form input[type="text"]::placeholder {
-  color: rgba(229, 229, 229, 0.5);
-  font-size: 0.95rem;
-}
-
-.waitlist-form input[type="text"]:focus {
-  outline: none;
-  background: rgba(255, 255, 255, 0.08);
-  border-color: #ffffff;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.15);
-}
-
-.waitlist-form button {
-  padding: 14px 24px;
-  font-size: 1rem;
-  background-color: #e5e5e5;
-  color: #0b0c10;
-  border: none;
-  border-radius: 18px;
-  cursor: none;
-  width: fit-content; 
-  margin-top: 20px;          
-  align-self: center;        
-  transition: background 0.2s, transform 0.2s;
-}
-
-.waitlist-form button:hover {
-  background-color: #aeacac;
-  transform: translateY(-1px);
 }
 
 #response-msg {
@@ -164,4 +69,63 @@ main {
   margin-top: -10px;
   min-height: 1.5em;
   transition: opacity 0.3s ease;
+}
+#space-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+#earth {
+  position: absolute;
+  top: -100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200vw;
+  height: 200vw;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    #0b0c10 0%,
+    #141519 80%,
+    rgba(255, 255, 255, 0.07) 96%,
+    rgba(255, 255, 255, 0.02) 98%,
+    transparent 100%
+  );
+  z-index: 1;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards 2s;
+  pointer-events: none;
+  filter: blur(0.5px);
+}
+
+#starfield {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards 2s;
+}
+
+#earth-arc {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards 2s;
+}
+
+main {
+  position: relative;
 }

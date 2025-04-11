@@ -1,20 +1,86 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Corvus Defense</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <button id="waitlist-btn">Join Waitlist</button>
-  </header>
-  <main>
-    <h1 id="typing-text" class="fade-in"></h1>
-  </main>
-  <script src="script.js"></script>
-  <script src="cursor.js"></script>
+  <canvas id="starfield"></canvas>
+
+  <svg id="earth-arc" viewBox="0 0 100 50" preserveAspectRatio="none">
+    <defs>
+      <radialGradient id="glow" cx="50%" cy="100%" r="100%">
+        <stop offset="80%" stop-color="white" stop-opacity="0.6" />
+        <stop offset="100%" stop-color="white" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <path d="M0,50 Q50,0 100,50 Z" fill="#000000" />
+    <path d="M0,50 Q50,0 100,50" stroke="url(#glow)" stroke-width="0.5" fill="none" />
+  </svg>
+
+  <div id="typing-text">corvus defense</div>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <script>
+    window.onload = () => {
+      const cursorDot = document.getElementById("cursorDot");
+      if (cursorDot) {
+        document.addEventListener("mousemove", (e) => {
+          cursorDot.style.opacity = "1";
+          cursorDot.style.left = e.clientX + "px";
+          cursorDot.style.top = e.clientY + "px";
+        });
+      }
+
+      // Starfield
+      const canvas = document.getElementById("starfield");
+      const ctx = canvas.getContext("2d");
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+
+      const stars = Array.from({ length: 120 }).map(() => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 3 + 1.5,
+        opacity: Math.random(),
+        phase: Math.random() * Math.PI * 2,
+        frequency: Math.random() * 0.01 + 0.003,
+        speed: Math.random() * 0.002 + 0.001,
+      }));
+
+      function drawStars() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (const star of stars) {
+          const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.radius);
+          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
+          gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
+          ctx.beginPath();
+          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+          ctx.fillStyle = gradient;
+          ctx.fill();
+          star.phase += star.frequency;
+          star.opacity = 0.5 + 0.5 * Math.sin(star.phase);
+        }
+        requestAnimationFrame(drawStars);
+      }
+      drawStars();
+    };
+  </script>
 </body>
 </html>
