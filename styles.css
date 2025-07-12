@@ -1,7 +1,7 @@
 body {
   margin: 0;
   background: black;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Orbitron', sans-serif;
   color: white;
   cursor: none;
@@ -103,6 +103,13 @@ main {
   filter: blur(0.5px);
 }
 
+#hero-section {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
 #starfield {
   position: absolute;
   top: 0;
@@ -128,4 +135,88 @@ main {
 
 main {
   position: relative;
+}
+
+#mission-statement {
+  position: relative;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 10;
+  background: black;
+}
+
+.mission-content {
+  max-width: 800px;
+  text-align: center;
+  padding: 3rem;
+}
+
+.mission-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+#mission-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #cccccc;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+#ycombinator-section {
+  position: relative;
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+}
+
+.yc-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.partners-logos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.yc-logo, .ovo-logo {
+  max-height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
+.yc-logo:hover {
+  filter: brightness(1) contrast(1);
+}
+
+.ovo-logo:hover {
+  filter: brightness(1) contrast(1);
+}
+
+.partners-title {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
