@@ -15,43 +15,46 @@
   </style>
 </head>
 <body>
-  <section id="hero-section">
-    <canvas id="starfield"></canvas>
 
-    <svg id="earth-arc" viewBox="0 0 100 50" preserveAspectRatio="none">
-      <defs>
-        <radialGradient id="glow" cx="50%" cy="100%" r="100%">
-          <stop offset="80%" stop-color="white" stop-opacity="0.6" />
-          <stop offset="100%" stop-color="white" stop-opacity="0" />
-        </radialGradient>
-      </defs>
-      <path d="M0,50 Q50,0 100,50 Z" fill="#000000" />
-      <path d="M0,50 Q50,0 100,50" stroke="url(#glow)" stroke-width="0.5" fill="none" />
-    </svg>
+  <div id="vertical-center-stack"S>
+    <section id="hero-section">
+      <canvas id="starfield"></canvas>
 
-    <div id="typing-text">corvus defense</div>
-  </section>
+      <svg id="earth-arc" viewBox="0 0 100 50" preserveAspectRatio="none">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="100%" r="100%">
+            <stop offset="80%" stop-color="white" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <path d="M0,50 Q50,0 100,50 Z" fill="#000000" />
+        <path d="M0,50 Q50,0 100,50" stroke="url(#glow)" stroke-width="0.5" fill="none" />
+      </svg>
+
+      <div id="typing-text">corvus defense</div>
+    </section>
+
+    <section id="mission-statement">
+      <div class="mission-content">
+        <h2>Our Mission</h2>
+        <p id="mission-text">
+          Autonomous systems are the future of warfare, but they are slow to adapt to a dynamic battlefield. Corvus Defense is building the infrastructure required to deploy the most flexible and capable autonomous systems in the world, enabling our warfighters to operate with unprecedented speed and precision.
+        </p>
+      </div>
+    </section>
+
+    <section id="ycombinator-section">
+      <div class="yc-content">
+        <h2 class="partners-title">Partners</h2>
+        <div class="partners-logos">
+          <img src="https://i0.wp.com/www.vccafe.com/wp-content/uploads/2017/09/Y_Combinator_logo_text_wordmark.png?ssl=1" alt="Y Combinator" class="yc-logo">
+          <img src="https://www.capboard.io/cms/assets/investor_listing/3429.png" alt="OVO Fund" class="ovo-logo">
+        </div>
+      </div>
+    </section>
+  </div>
 
   <div class="cursor-dot" id="cursorDot"></div>
-
-  <section id="mission-statement">
-    <div class="mission-content">
-      <h2>Our Mission</h2>
-      <p id="mission-text">
-        Autonomous systems are the future of warfare, but they are slow to adapt to a dynamic battlefield. Corvus Defense is building the infrastructure required to deploy the most flexible and capable autonomous systems in the world, enabling our warfighters to operate with unprecedented speed and precision.
-      </p>
-    </div>
-  </section>
-
-  <section id="ycombinator-section">
-    <div class="yc-content">
-      <h2 class="partners-title">Partners</h2>
-      <div class="partners-logos">
-        <img src="https://i0.wp.com/www.vccafe.com/wp-content/uploads/2017/09/Y_Combinator_logo_text_wordmark.png?ssl=1" alt="Y Combinator" class="yc-logo">
-        <img src="https://www.capboard.io/cms/assets/investor_listing/3429.png" alt="OVO Fund" class="ovo-logo">
-      </div>
-    </div>
-  </section>
 
   <script>
     window.onload = () => {

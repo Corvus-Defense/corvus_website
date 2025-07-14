@@ -226,3 +226,17 @@ main {
   font-weight: 600;
   text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
+
+#vertical-center-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vh 0; /* adds top & bottom breathing room */
+  gap: 6vh; /* spacing between each section */
+}
+
+#hero-section,
+#mission-statement,
+#ycombinator-section {
+  flex-shrink: 0;
+}
