@@ -7,6 +7,7 @@
   <title>Corvus Defense</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <style>
 
     @keyframes fadeIn {
@@ -15,6 +16,36 @@
   </style>
 </head>
 <body>
+  <div id="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div id="menu-overlay">
+    <button id="menu-close" aria-label="Close menu">&times;</button>
+    <div class="menu-content">
+      <a href="#" class="menu-link" id="home-link">Home</a>
+      <a href="#" class="menu-link" id="contact-link">Contact Us</a>
+    </div>
+  </div>
+  <div id="contact-overlay">
+    <div id="menu-btn-contact">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="contact-content">
+      <h2>Contact Us</h2>
+      <form id="contact-form" action="https://formspree.io/f/xjkokyoj" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <div id="contact-form-status"></div>
+    </div>
+  </div>
+
   <section id="hero-section">
     <canvas id="starfield"></canvas>
 
@@ -53,55 +84,6 @@
     </div>
   </section>
 
-  <script>
-    window.onload = () => {
-      const cursorDot = document.getElementById("cursorDot");
-      if (cursorDot) {
-        document.addEventListener("mousemove", (e) => {
-          cursorDot.style.opacity = "1";
-          cursorDot.style.left = e.clientX + "px";
-          cursorDot.style.top = e.clientY + "px";
-        });
-      }
-
-      // Starfield
-      const canvas = document.getElementById("starfield");
-      const ctx = canvas.getContext("2d");
-
-      function resizeCanvas() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
-      window.addEventListener("resize", resizeCanvas);
-      resizeCanvas();
-
-      const stars = Array.from({ length: 120 }).map(() => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 3 + 1.5,
-        opacity: Math.random(),
-        phase: Math.random() * Math.PI * 2,
-        frequency: Math.random() * 0.01 + 0.003,
-        speed: Math.random() * 0.002 + 0.001,
-      }));
-
-      function drawStars() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (const star of stars) {
-          const gradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.radius);
-          gradient.addColorStop(0, `rgba(255, 255, 255, ${star.opacity})`);
-          gradient.addColorStop(1, `rgba(255, 255, 255, 0)`);
-          ctx.beginPath();
-          ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-          ctx.fillStyle = gradient;
-          ctx.fill();
-          star.phase += star.frequency;
-          star.opacity = 0.5 + 0.5 * Math.sin(star.phase);
-        }
-        requestAnimationFrame(drawStars);
-      }
-      drawStars();
-    };
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
