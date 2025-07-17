@@ -16,63 +16,31 @@
   </style>
 </head>
 <body>
-  <div id="menu-btn">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <div id="menu-overlay">
-    <button id="menu-close" aria-label="Close menu">&times;</button>
-    <div class="menu-content">
-      <a href="#" class="menu-link" id="home-link">Home</a>
-      <a href="#" class="menu-link" id="contact-link">Contact Us</a>
-    </div>
-  </div>
-  <div id="contact-overlay">
-    <div id="menu-btn-contact">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="contact-content">
-      <h2>Contact Us</h2>
-      <form id="contact-form" action="https://formspree.io/f/xjkokyoj" method="POST">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send</button>
-      </form>
-      <div id="contact-form-status"></div>
-    </div>
-  </div>
-
   <section id="hero-section">
     <canvas id="starfield"></canvas>
 
-    <svg id="earth-arc" viewBox="0 0 100 50" preserveAspectRatio="none">
-      <defs>
-        <radialGradient id="glow" cx="50%" cy="100%" r="100%">
-          <stop offset="80%" stop-color="white" stop-opacity="0.6" />
-          <stop offset="100%" stop-color="white" stop-opacity="0" />
-        </radialGradient>
-      </defs>
-      <path d="M0,50 Q50,0 100,50 Z" fill="#000000" />
-      <path d="M0,50 Q50,0 100,50" stroke="url(#glow)" stroke-width="0.5" fill="none" />
-    </svg>
+      <svg id="earth-arc" viewBox="0 0 100 50" preserveAspectRatio="none">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="100%" r="100%">
+            <stop offset="80%" stop-color="white" stop-opacity="0.6" />
+            <stop offset="100%" stop-color="white" stop-opacity="0" />
+          </radialGradient>
+        </defs>
+        <path d="M0,50 Q50,0 100,50 Z" fill="#000000" />
+        <path d="M0,50 Q50,0 100,50" stroke="url(#glow)" stroke-width="0.5" fill="none" />
+      </svg>
 
-    <div id="typing-text">corvus defense</div>
-  </section>
+      <div id="typing-text">corvus defense</div>
+    </section>
 
-  <div class="cursor-dot" id="cursorDot"></div>
-
-  <section id="mission-statement">
-    <div class="mission-content">
-      <h2>Our Mission</h2>
-      <p id="mission-text">
-        Today, autonomous systems are not ready for the battlefield. Corvus Defense is building the backbone that will enable our next generation of warfighters to use them effectively.
-      </p>
-    </div>
-  </section>
+    <section id="mission-statement">
+      <div class="mission-content">
+        <h2>Our Mission</h2>
+        <p id="mission-text">
+          Autonomous systems are the future of warfare, but they are slow to adapt to a dynamic battlefield. Corvus Defense is building the infrastructure required to deploy the most flexible and capable autonomous systems in the world, enabling our warfighters to operate with unprecedented speed and precision.
+        </p>
+      </div>
+    </section>
 
   <section id="ycombinator-section">
     <div class="yc-content">

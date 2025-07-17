@@ -196,8 +196,14 @@ main {
   gap: 3rem;
 }
 
-.yc-logo, .ovo-logo {
-  max-height: 80px;
+.yc-logo {
+  max-height: 40px; /* Adjust up or down based on visual match */
+  width: auto;
+  object-fit: contain;
+}
+
+.ovo-logo {
+  max-height: 90px; /* Make this larger to stand out */
   width: auto;
   object-fit: contain;
 }
