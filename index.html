@@ -16,6 +16,40 @@
   </style>
 </head>
 <body>
+  <div id="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <div id="menu-overlay">
+    <button id="menu-close">&times;</button>
+    <div class="menu-content">
+      <a href="#" id="home-link" class="menu-link">Home</a>
+      <a href="#" id="contact-link" class="menu-link">Contact</a>
+    </div>
+  </div>
+
+  <div id="contact-overlay">
+    <div class="contact-content">
+      <div class="contact-overlay-header">
+        <div id="menu-btn-contact">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <h2>Contact Us</h2>
+      <form id="contact-form" action="https://formspree.io/f/xnqkqjzv" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+        <div id="contact-form-status"></div>
+      </form>
+    </div>
+  </div>
+
   <section id="hero-section">
     <canvas id="starfield"></canvas>
 
@@ -53,5 +87,6 @@
   </section>
 
   <script src="script.js"></script>
+  <script src="cursor.js"></script>
 </body>
 </html>
