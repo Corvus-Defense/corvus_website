@@ -41,13 +41,29 @@
         </div>
       </div>
       <h2>Contact Us</h2>
-      <form id="contact-form" action="https://formspree.io/f/xnqkqjzv" method="POST">
+      <!-- <form id="contact-form" action="https://formspree.io/f/xjkokyoj" method="POST">
         <input type="text" name="name" placeholder="Your Name" required />
         <input type="email" name="email" placeholder="Your Email" required />
         <textarea name="message" placeholder="Your Message" required></textarea>
         <button type="submit">Send</button>
         <div id="contact-form-status"></div>
-      </form>
+      </form> -->
+      <form
+        id="contact-form"
+        action="https://formspree.io/f/xjkokyoj"
+        method="POST"
+      >
+        <label>
+          Your email:
+          <input type="email" name="email">
+        </label>
+        <label>
+          Your message:
+          <textarea name="message"></textarea>
+        </label>
+        <!-- your other form fields go here -->
+        <button type="submit">Send</button>
+    </form>
     </div>
   </div>
 
